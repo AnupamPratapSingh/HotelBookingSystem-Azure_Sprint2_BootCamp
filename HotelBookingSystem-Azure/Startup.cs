@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace HotelBookingSystem_Azure
 {
     public class Startup
@@ -26,6 +27,7 @@ namespace HotelBookingSystem_Azure
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddScoped<InterfaceHotelServices,HotelServices>();
             services.AddDbContext<HBSDBContext>(x => x.UseSqlServer(Configuration.GetConnectionString("ConStr")));
         }
 
