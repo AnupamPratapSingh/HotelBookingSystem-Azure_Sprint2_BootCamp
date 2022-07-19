@@ -1,0 +1,70 @@
+﻿@model IEnumerable<HotelBookingSystem_Azure.Models.BookingRequest>
+
+@{
+    ViewData["Title"] = "BookingRequestList";
+}
+
+
+<div>
+    <h2 class="text-primary">Booking Request List</h2>
+</div>
+
+<div class="container p-3" style="background-color:azure">
+    <
+
+    <div>
+        <a class="nav-link text-dark btn-primary font-weight-bold" style="margin: 10px; background-color: #00b9ff;float: right" asp-controller="Admin" asp- asp-action="BookingRequestList">Booking Request List</a>
+    </div>
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Booking_id
+                    </th>
+                    <th>
+                        hotel_name
+                    </th>
+                    <th>
+                        user_name
+                    </th>
+                    <th>
+                        room_type
+                    </th>
+                    <th>
+                        booked_from
+                    </th>
+                    <th>
+                        booked_to
+                    </th>
+                    <th>
+                        no_of_adults
+                    </th>
+                    <th>
+                        no_of_children
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var detail in Model)
+                {
+                    <tr>
+                        <td>@detail.Booking_id</td>
+                        <td>@detail.hotel_name</td>
+                        <td>@detail.user_name</td>
+                        <td>@detail.room_type</td>
+                        <td>@detail.booked_from</td>
+                        <td>@detail.booked_to</td>
+                        <td>@detail.no_of_adults</td>
+                        <td>@detail.no_of_children</td>
+                     
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }

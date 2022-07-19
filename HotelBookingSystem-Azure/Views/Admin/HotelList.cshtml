@@ -1,0 +1,82 @@
+﻿@model IEnumerable<HotelBookingSystem_Azure.Models.Hotel>
+
+@{
+    ViewData["Title"] = "HotelList";
+}
+
+
+<div>
+    <h2 class="text-primary">Hotel List</h2>
+</div>
+
+<div class="container p-3" style="background-color:azure">
+    <
+
+    <div>
+        <a class="nav-link text-dark btn-primary font-weight-bold" style="margin: 10px; background-color: #00b9ff;float: right" asp-controller="Admin" asp- asp-action="HotelList">Hotel List</a>
+    </div>
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        hotel_id
+                    </th>
+                    <th>
+                        city
+                    </th>
+                    <th>
+                        hotel_name
+                    </th>
+                    <th>
+                        address
+                    </th>
+                    <th>
+                        description
+                    </th>
+                    <th>
+                        avg_rate_per_nigh
+                    </th>
+                    <th>
+                        phone_no1
+                    </th>
+                    <th>
+                        phone_no2
+                    </th>
+                    <th>
+                        rating
+                    </th>
+                    <th>
+                        email
+                    </th>
+                    <th>
+                        fax
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var detail in Model)
+                {
+                <tr>
+                    <td>@detail.hotel_id</td>
+                    <td>@detail.city</td>
+                    <td>@detail.hotel_name</td>
+                    <td>@detail.address</td>
+                    <td>@detail.description</td>
+                    <td>@detail.avg_rate_per_nigh</td>
+                    <td>@detail.phone_no1</td>
+                    <td>@detail.phone_no2</td>
+                    <td>@detail.rating</td>
+                    <td>@detail.email</td>
+                    <td>@detail.fax</td>
+
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
