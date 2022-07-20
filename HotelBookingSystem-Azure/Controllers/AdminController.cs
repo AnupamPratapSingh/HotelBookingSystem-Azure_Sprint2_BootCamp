@@ -123,7 +123,7 @@ namespace HotelBookingSystem_Azure.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateEmployee(Hotel hotel)
+        public async Task<IActionResult> UpdateHotel(Hotel hotel)
         {
             try
             {
@@ -151,7 +151,7 @@ namespace HotelBookingSystem_Azure.Controllers
 
 
     
-        public IActionResult DeleteHoel()
+        public IActionResult DeleteHotel()
         {
             return View();
         }
