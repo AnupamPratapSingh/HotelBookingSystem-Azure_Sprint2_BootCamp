@@ -13,12 +13,14 @@ namespace HotelBookingSystem_Azure.Controllers
     {
         private readonly InterfaceHotelServices HotelServices;
         private readonly ILogger<UserController> _logger;
+        private readonly SendServiceBusMessage _sendServiceBusMessage;
 
-        public UserController(InterfaceHotelServices HotelServices, ILogger<UserController> logger)
+        public UserController(InterfaceHotelServices HotelServices, ILogger<UserController> logger , SendServiceBusMessage sendServiceBusMessage)
         {
             _logger = logger;
             _logger.LogInformation("HBS SYSTEM APP");
             this.HotelServices = HotelServices;
+            _sendServiceBusMessage = sendServiceBusMessage;
         }
         public IActionResult User()
         {
@@ -38,13 +40,12 @@ namespace HotelBookingSystem_Azure.Controllers
             {
                 HotelServices.RegisterNewUser(user);
 
-                //await _sendServiceBusMessage.sendServiceBusMessage(new ServiceBusMessageData
-                //{
-                //    EmpId = employeeClass.EmpId,
-                //    EmpName = employeeClass.EmpName,
-                //    EmpGender = employeeClass.EmpGender,
-                //    Action = "Added"
-                //});
+                await _sendServiceBusMessage.sendServiceBusMessage(new ServiceBusMessageData
+                {
+                    user_name = user.user_name,
+                    user_id = user.user_id,
+                    Action = "Registered"
+                });
 
             }
             catch (Exception e)
@@ -69,13 +70,13 @@ namespace HotelBookingSystem_Azure.Controllers
             {
                 HotelServices.AddBookingRequest(booking);
 
-                //await _sendServiceBusMessage.sendServiceBusMessage(new ServiceBusMessageData
-                //{
-                //    EmpId = employeeClass.EmpId,
-                //    EmpName = employeeClass.EmpName,
-                //    EmpGender = employeeClass.EmpGender,
-                //    Action = "Added"
-                //});
+                await _sendServiceBusMessage.sendServiceBusMessage(new ServiceBusMessageData
+                {
+                    user_name = booking.user_name,
+                    Booking_id = booking.Booking_id,
+                    hotel_name = booking.hotel_name,
+                    Action = "Requested For Booking"
+                });
 
             }
             catch (Exception e)

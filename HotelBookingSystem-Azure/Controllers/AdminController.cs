@@ -13,12 +13,14 @@ namespace HotelBookingSystem_Azure.Controllers
     {
         private readonly InterfaceHotelServices HotelServices;
         private readonly ILogger<AdminController>  _logger;
+        private readonly SendServiceBusMessage _sendServiceBusMessage;
 
-        public AdminController(InterfaceHotelServices HotelServices, ILogger<AdminController> logger)
+        public AdminController(InterfaceHotelServices HotelServices, ILogger<AdminController> logger , SendServiceBusMessage sendServiceBusMessage)
         {
             _logger = logger;
             _logger.LogInformation("HBS SYSTEM APP");
             this.HotelServices = HotelServices;
+            _sendServiceBusMessage = sendServiceBusMessage;
         }
 
         public IActionResult Index()
@@ -99,14 +101,6 @@ namespace HotelBookingSystem_Azure.Controllers
             {
                 HotelServices.AddHotel(hotel);
 
-                //await _sendServiceBusMessage.sendServiceBusMessage(new ServiceBusMessageData
-                //{
-                //    EmpId = employeeClass.EmpId,
-                //    EmpName = employeeClass.EmpName,
-                //    EmpGender = employeeClass.EmpGender,
-                //    Action = "Added"
-                //});
-
             }
             catch (Exception e)
             {
@@ -128,15 +122,6 @@ namespace HotelBookingSystem_Azure.Controllers
             try
             {
                 HotelServices.UpdateHotel(hotel);
-                //await _sendServiceBusMessage.sendServiceBusMessage(new ServiceBusMessageData
-                //{
-                //    EmpId = employee.EmpId,
-                //    EmpName = employee.EmpName,
-                //    EmpGender = employee.EmpGender,
-                //    LeaveStatus = employee.LeaveStatus,
-                //    Action = "Approved for Leave"
-
-                //});
 
 
             }
@@ -161,13 +146,6 @@ namespace HotelBookingSystem_Azure.Controllers
             try
             {
                 HotelServices.DeleteHotel(hotel_id);
-                //await _sendServiceBusMessage.sendServiceBusMessage(new ServiceBusMessageData
-                //{
-                //    EmpId = EmpId,
-                //    Action = "Cancalled the Leave"
-
-                //});
-
 
             }
             catch (Exception e)
@@ -191,13 +169,13 @@ namespace HotelBookingSystem_Azure.Controllers
             {
                 HotelServices.ApproveBooking(booking);
 
-                //await _sendServiceBusMessage.sendServiceBusMessage(new ServiceBusMessageData
-                //{
-                //    EmpId = employeeClass.EmpId,
-                //    EmpName = employeeClass.EmpName,
-                //    EmpGender = employeeClass.EmpGender,
-                //    Action = "Added"
-                //});
+                await _sendServiceBusMessage.sendServiceBusMessage(new ServiceBusMessageData
+                {
+                    booking_id = booking.booking_id,
+                    room_id = booking.room_id,
+                    user_id = booking.user_id,
+                    Action = "Approved Booking"
+                });
 
             }
             catch (Exception e)

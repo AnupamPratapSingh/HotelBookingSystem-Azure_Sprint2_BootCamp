@@ -28,6 +28,7 @@ namespace HotelBookingSystem_Azure
         {
             services.AddControllersWithViews();
             services.AddScoped<InterfaceHotelServices,HotelServices>();
+            services.AddScoped<SendServiceBusMessage>();
             services.AddDbContext<HBSDBContext>(x => x.UseSqlServer(Configuration.GetConnectionString("ConStr")));
         }
 
