@@ -3,10 +3,11 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "logicAppName": {
-      "value": "sendEmailAlert"
+      "value": "SendEmailAlert"
     },
+
     "servicebus_connectionString": {
-      "value": "Endpoint=sb://hbsservicebus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=uzYc3mG3itWkmacJw+KQ9scafxJ7thunuQsl02l03OI="
+      "value": "Endpoint=sb://hbs-sb-rg.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=L/UjtUc1yZ/kKwulSUJ6v46BrpNc1b3Foz7P6kIJqGI="
     }
   }
 }

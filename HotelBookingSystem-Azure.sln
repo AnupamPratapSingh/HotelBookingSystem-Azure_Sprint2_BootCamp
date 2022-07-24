@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.32630.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelBookingSystem-Azure", "HotelBookingSystem-Azure\HotelBookingSystem-Azure.csproj", "{A181532A-8047-43CA-9589-90B8BD45861F}"
 EndProject
-Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "ServiceBus.queue", "ServiceBus.queue\ServiceBus.queue.deployproj", "{7D1B7AE6-D739-4359-9945-9182EEC15503}"
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "ServiceBus.Queue", "ServiceBus.Queue\ServiceBus.Queue.deployproj", "{FEBA218F-0FA8-4EFF-A145-294B5B320A05}"
 EndProject
-Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "sendEmailAlert", "sendEmailAlert\sendEmailAlert.deployproj", "{29A01E78-6A87-4B5E-B86B-40F1BA9E513F}"
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "SendEmailAlert", "SendEmailAlert\SendEmailAlert.deployproj", "{BE870111-5C32-4634-A61B-DF01E3031BBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationLogin", "ValidationLogin\ValidationLogin.csproj", "{97CA3416-924F-4E65-A3D1-AACBE0B4FB7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidateLogin", "ValidateLogin\ValidateLogin.csproj", "{BC05A206-FC23-4288-BC9D-40BF5EBA0705}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +21,18 @@ Global
 		{A181532A-8047-43CA-9589-90B8BD45861F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A181532A-8047-43CA-9589-90B8BD45861F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A181532A-8047-43CA-9589-90B8BD45861F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7D1B7AE6-D739-4359-9945-9182EEC15503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D1B7AE6-D739-4359-9945-9182EEC15503}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D1B7AE6-D739-4359-9945-9182EEC15503}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D1B7AE6-D739-4359-9945-9182EEC15503}.Release|Any CPU.Build.0 = Release|Any CPU
-		{29A01E78-6A87-4B5E-B86B-40F1BA9E513F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{29A01E78-6A87-4B5E-B86B-40F1BA9E513F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{29A01E78-6A87-4B5E-B86B-40F1BA9E513F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{29A01E78-6A87-4B5E-B86B-40F1BA9E513F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{97CA3416-924F-4E65-A3D1-AACBE0B4FB7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97CA3416-924F-4E65-A3D1-AACBE0B4FB7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97CA3416-924F-4E65-A3D1-AACBE0B4FB7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97CA3416-924F-4E65-A3D1-AACBE0B4FB7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEBA218F-0FA8-4EFF-A145-294B5B320A05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEBA218F-0FA8-4EFF-A145-294B5B320A05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEBA218F-0FA8-4EFF-A145-294B5B320A05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEBA218F-0FA8-4EFF-A145-294B5B320A05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE870111-5C32-4634-A61B-DF01E3031BBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE870111-5C32-4634-A61B-DF01E3031BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE870111-5C32-4634-A61B-DF01E3031BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE870111-5C32-4634-A61B-DF01E3031BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC05A206-FC23-4288-BC9D-40BF5EBA0705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC05A206-FC23-4288-BC9D-40BF5EBA0705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC05A206-FC23-4288-BC9D-40BF5EBA0705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC05A206-FC23-4288-BC9D-40BF5EBA0705}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

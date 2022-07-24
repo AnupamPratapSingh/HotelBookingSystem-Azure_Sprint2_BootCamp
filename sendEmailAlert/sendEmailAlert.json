@@ -60,6 +60,20 @@
         "description": "Location of the Logic App."
       }
     },
+    "servicebus_Connection_Name": {
+      "type": "string",
+      "defaultValue": "servicebus"
+    },
+    "servicebus_Connection_DisplayName": {
+      "type": "string",
+      "defaultValue": "Sb-Conn"
+    },
+    "servicebus_connectionString": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Azure Service Bus Connection String"
+      }
+    },
     "outlook_Connection_Name": {
       "type": "string",
       "defaultValue": "outlook"
@@ -67,20 +81,6 @@
     "outlook_Connection_DisplayName": {
       "type": "string",
       "defaultValue": "Outlook.com"
-    },
-    "servicebus_Connection_Name": {
-      "type": "string",
-      "defaultValue": "servicebus-1"
-    },
-    "servicebus_Connection_DisplayName": {
-      "type": "string",
-      "defaultValue": "sb-Conn"
-    },
-    "servicebus_connectionString": {
-      "type": "securestring",
-      "metadata": {
-        "description": "Azure Service Bus Connection String"
-      }
     }
   },
   "variables": {},
@@ -115,9 +115,10 @@
                 },
                 "method": "post",
                 "body": {
-                  "To": "Anupam.19b133002@abes.ac.in,aaanupam.singh007@gmail.com",
-                  "Subject": "@{body('Parse_JSON_Incoming_Message')?['Action']} ",
-                  "Body": "<p>Hii ,<br>\n<br>\n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@{body('Parse_JSON_Incoming_Message')?['user_name']}, @{body('Parse_JSON_Incoming_Message')?['user_id']} Has been @{body('Parse_JSON_Incoming_Message')?['Action']}<br>\ndetails :<br>\n<br>\n@{body('Parse_JSON_Incoming_Message')?['hotel_name']}<br>\n@{body('Parse_JSON_Incoming_Message')?['room_id']}<br>\n<br>\n<br>\n<br>\nThanks and Regards</p>"
+                  "To": "Anupam.19b133002@abes.ac.in",
+                  "Subject": "@{body('Parse_JSON_Incoming_Message')?['Action']}",
+                  "Body": "<p>Hi !!,<br>\n<br>\n<br>\n username/user_id @{body('Parse_JSON_Incoming_Message')?['user_name']},@{body('Parse_JSON_Incoming_Message')?['user_id']} Has been @{body('Parse_JSON_Incoming_Message')?['Action']}.<br>\n<br>\nDetails ,<br>\n<br>\nBooking id = @{body('Parse_JSON_Incoming_Message')?['Booking_id']}/@{body('Parse_JSON_Incoming_Message')?['booking_id']}<br>\nHotel name = @{body('Parse_JSON_Incoming_Message')?['hotel_name']}<br>\nroom id = @{body('Parse_JSON_Incoming_Message')?['room_id']}<br>\n<br>\nThanks and Regards<br>\n<br>\nHBS</p>",
+                  "Importance": "High"
                 },
                 "path": "/v2/Mail"
               },
@@ -136,7 +137,7 @@
                   }
                 },
                 "method": "delete",
-                "path": "/@{encodeURIComponent(encodeURIComponent('hbs-sb-receive-queue'))}/messages/complete",
+                "path": "/@{encodeURIComponent(encodeURIComponent('hbs-sb-queue'))}/messages/complete",
                 "queries": {
                   "lockToken": "@triggerBody()?['LockToken']",
                   "queueType": "Main",
@@ -166,7 +167,7 @@
                   }
                 },
                 "method": "get",
-                "path": "/@{encodeURIComponent(encodeURIComponent('hbs-sb-receive-queue'))}/messages/batch/head/peek",
+                "path": "/@{encodeURIComponent(encodeURIComponent('hbs-sb-queue'))}/messages/batch/head/peek",
                 "queries": {
                   "maxMessageCount": 20,
                   "queueType": "Main",
@@ -195,8 +196,6 @@
                 "id": "[concat(subscription().id, '/providers/Microsoft.Web/locations/', parameters('logicAppLocation'), '/managedApis/', 'outlook')]",
                 "connectionId": "[resourceId('Microsoft.Web/connections', parameters('outlook_Connection_Name'))]",
                 "connectionName": "[parameters('outlook_Connection_Name')]"
-              
-     
               }
             }
           }
@@ -204,21 +203,8 @@
       },
       "dependsOn": [
         "[resourceId('Microsoft.Web/connections', parameters('servicebus_Connection_Name'))]",
-        "[resourceId('Microsoft.Web/connections', parameters('outlook_Connection_Name'))]",
-        "[resourceId('Microsoft.Web/connections', parameters('servicebus_Connection_Name'))]"
+        "[resourceId('Microsoft.Web/connections', parameters('outlook_Connection_Name'))]"
       ]
-    },
-    {
-      "type": "MICROSOFT.WEB/CONNECTIONS",
-      "apiVersion": "2018-07-01-preview",
-      "name": "[parameters('outlook_Connection_Name')]",
-      "location": "[parameters('logicAppLocation')]",
-      "properties": {
-        "api": {
-          "id": "[concat(subscription().id, '/providers/Microsoft.Web/locations/', parameters('logicAppLocation'), '/managedApis/', 'outlook')]"
-        },
-        "displayName": "[parameters('outlook_Connection_DisplayName')]"
-      }
     },
     {
       "type": "MICROSOFT.WEB/CONNECTIONS",
@@ -233,6 +219,18 @@
         "parameterValues": {
           "connectionString": "[parameters('servicebus_connectionString')]"
         }
+      }
+    },
+    {
+      "type": "MICROSOFT.WEB/CONNECTIONS",
+      "apiVersion": "2018-07-01-preview",
+      "name": "[parameters('outlook_Connection_Name')]",
+      "location": "[parameters('logicAppLocation')]",
+      "properties": {
+        "api": {
+          "id": "[concat(subscription().id, '/providers/Microsoft.Web/locations/', parameters('logicAppLocation'), '/managedApis/', 'outlook')]"
+        },
+        "displayName": "[parameters('outlook_Connection_DisplayName')]"
       }
     }
   ],

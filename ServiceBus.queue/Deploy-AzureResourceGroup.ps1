@@ -6,8 +6,8 @@ Param(
     [switch] $UploadArtifacts,
     [string] $StorageAccountName,
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',
-    [string] $TemplateFile = 'ServiceBus.queue.json',
-    [string] $TemplateParametersFile = 'ServiceBus.queue.parameters.json',
+    [string] $TemplateFile = 'ServiceBus.Queue.json',
+    [string] $TemplateParametersFile = 'ServiceBus.Queue.parameters.json',
     [string] $ArtifactStagingDirectory = '.',
     [string] $DSCSourceFolder = 'DSC',
     [switch] $ValidateOnly

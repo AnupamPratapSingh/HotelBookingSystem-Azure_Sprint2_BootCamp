@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>29a01e78-6a87-4b5e-b86b-40f1ba9e513f</ProjectGuid>
+    <ProjectGuid>be870111-5c32-4634-a61b-df01e3031bba</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup>
     <PrepareForBuildDependsOn>
@@ -27,8 +27,8 @@
       <Visible>False</Visible>
     </None>
     <Content Include="Deploy-AzureResourceGroup.ps1" />
-    <Content Include="sendEmailAlert.json" />
-    <Content Include="sendEmailAlert.parameters.json" />
+    <Content Include="SendEmailAlert.json" />
+    <Content Include="SendEmailAlert.parameters.json" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>

@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>7d1b7ae6-d739-4359-9945-9182eec15503</ProjectGuid>
+    <ProjectGuid>feba218f-0fa8-4eff-a145-294b5b320a05</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup>
     <PrepareForBuildDependsOn>
@@ -23,8 +23,8 @@
   <Import Condition=" Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets') " Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets" />
   <!-- vertag<:>end -->
   <ItemGroup>
-    <Content Include="ServiceBus.queue.json" />
-    <Content Include="ServiceBus.queue.parameters.json" />
+    <Content Include="ServiceBus.Queue.json" />
+    <Content Include="ServiceBus.Queue.parameters.json" />
     <None Include="Deployment.targets">
       <Visible>False</Visible>
     </None>

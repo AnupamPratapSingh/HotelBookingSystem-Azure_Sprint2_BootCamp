@@ -30,6 +30,7 @@ namespace HotelBookingSystem_Azure
             services.AddScoped<InterfaceHotelServices,HotelServices>();
             services.AddScoped<SendServiceBusMessage>();
             services.AddDbContext<HBSDBContext>(x => x.UseSqlServer(Configuration.GetConnectionString("ConStr")));
+            services.AddScoped<UploadFile>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
